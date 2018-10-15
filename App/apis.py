@@ -31,3 +31,8 @@ def updata():
     db.session.add(cat)
     db.session.commit()
     return 'updata success !'
+#删除
+@blue.route('/drop/')
+def drop():
+    db.drop_all()
+    return '删除成功'
