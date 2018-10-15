@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 
 from App.ext import db
 from App.models import Cat
@@ -19,3 +19,15 @@ def add():
     db.session.add(cat)
     db.session.commit()
     return "添加成功"
+
+
+@blue.route('/updata/')
+def updata():
+    id = request.args.get('id')
+    name = request.args.get('name')
+
+    cat = Cat.query.get(id)
+    cat.name = name
+    db.session.add(cat)
+    db.session.commit()
+    return 'updata success !'
