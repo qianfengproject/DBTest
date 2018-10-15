@@ -36,3 +36,11 @@ def updata():
 def drop():
     db.drop_all()
     return '删除成功'
+
+# 查询
+@blue.route('findall')
+def findall():
+    cats = Cat.query.all()
+    for cat in cats:
+        print(cat.name)
+    return '查询成功'
